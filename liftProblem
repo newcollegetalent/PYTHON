@@ -1,3 +1,4 @@
+import time
 
 # Global Variables
 currentFloor = 0
@@ -12,8 +13,8 @@ thirdLift = 4
 def travel():
     global currentFloor, firstLift, secondLift, thirdLift
     
-    travelTo = int(input("\nWhich floor would you like to go to?  \nFloor number (0-10) : "))
-    newDelayTime = travelTo - currentFloor
+    gotoFloor = int(input("\nWhich floor would you like to go to?  \nFloor number (0-10) : "))
+    newDelayTime = gotoFloor - currentFloor
 
 
     test1 = int(firstLift - currentFloor)
@@ -33,7 +34,7 @@ def travel():
         delayTime = firstLift - currentFloor
 
         if (delayTime < 0): delayTime *= -1
-
+        time.sleep(delayTime)
         liftUsed = 1
         firstLift = currentFloor
         print("\n1st Lift has arrived to", currentFloor, " Floor")
@@ -45,6 +46,7 @@ def travel():
         delayTime = secondLift - currentFloor
 
         if (delayTime < 0): delayTime *= -1
+        time.sleep(delayTime)
 
         liftUsed = 2
         secondLift = currentFloor
@@ -58,7 +60,7 @@ def travel():
         delayTime = thirdLift - currentFloor
 
         if (delayTime < 0): delayTime *= -1
-
+        time.sleep(delayTime)
         liftUsed = 3
         secondLift = currentFloor
         print("\n3rd Lift has arrived to",currentFloor," Floor")
@@ -71,7 +73,7 @@ def travel():
         delayTime = firstLift - currentFloor
 
         if (delayTime < 0): delayTime *= -1
-
+        time.sleep(delayTime)
         liftUsed = 1
         firstLift = currentFloor
         print("\n1st Lift has arrived to", currentFloor, " Floor")
@@ -79,21 +81,23 @@ def travel():
 
 
     if(liftUsed == 1):
-        currentFloor = travelTo
-        firstLift = travelTo
+        currentFloor = gotoFloor
+        firstLift = gotoFloor
     elif(liftUsed == 2):
-        currentFloor = travelTo
-        secondLift = travelTo
+        currentFloor = gotoFloor
+        secondLift = gotoFloor
     elif(liftUsed == 3):
-        currentFloor = travelTo
-        thirdLift = travelTo
+        currentFloor = gotoFloor
+        thirdLift = gotoFloor
     else:
         print("\nInvalid processing\n")
 
     print("\n")
-    print("\nGoing to floor number ", travelTo, " Floor")
+    print("\nGoing to floor number ", gotoFloor, " Floor")
     if (newDelayTime < 0): newDelayTime *= -1
+    time.sleep(newDelayTime)
     print("\nYou have arrived to the",currentFloor," Floor\n")
+    time.sleep(3)
     Main()
 
 
@@ -103,6 +107,7 @@ def travel():
 def checkFloor():
     global currentFloor
     print("You are on floor number : ", currentFloor)
+    time.sleep(3)
     Main()
 
 
@@ -114,6 +119,7 @@ def checkLiftPositions():
     print("First Lift Position : ", firstLift)
     print("Second Lift Position : ", secondLift)
     print("Third Lift Position : ", thirdLift)
+    time.sleep(3)
     Main()
 
 
@@ -126,6 +132,7 @@ def liftChangePositions():
     firstLift = secondLift + 1
     secondLift = thirdLift + 1
     thirdLift = temp
+    time.sleep(3)
     Main()
 
 
